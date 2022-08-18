@@ -9,7 +9,8 @@ namespace TraversalCoreProje.ViewComponents.Default
 		TestimonialManager testimonialManager = new TestimonialManager(new EfTestimonialDal());
 		public IViewComponentResult Invoke()
 		{
-			return View();
+			var values = testimonialManager.TGetList();
+			return View(values);
 		}
 	}
 }
