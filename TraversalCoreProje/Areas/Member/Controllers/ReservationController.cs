@@ -13,6 +13,12 @@ namespace TraversalCoreProje.Areas.Member.Controllers
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 
         ReservationManager reservationManager = new ReservationManager(new EfReservationDal());
+
+        private readonly UserManager<AppUser> _userManager;
+        public ReservationController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
         public IActionResult MyCurrentReservation()
         {
             return View();
@@ -20,6 +26,12 @@ namespace TraversalCoreProje.Areas.Member.Controllers
         public IActionResult MyOldReservation()
         {
             return View();
+        }
+        public async Task<IActionResult> MyApprovalReservation()
+        {
+            var userValue = await _userManager.FindByNameAsync(User.Identity.Name);
+            var reservationValue= reservationManager.GetListByApproval(userValue.Id);
+            return View(reservationValue);
         }
         [HttpGet]
         public IActionResult NewReservation()
