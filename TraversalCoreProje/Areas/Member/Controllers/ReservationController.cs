@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -37,7 +38,7 @@ namespace TraversalCoreProje.Areas.Member.Controllers
         public IActionResult NewReservation(Reservation reservation)
         {
             reservation.AppUserId = 3;
-            reservation.Status = "Rezervasyon yapıldı.";
+            reservation.Status = "Onay bekliyor.";
             reservationManager.TInsert(reservation);
             return RedirectToAction("MyCurrentReservation");
         }
