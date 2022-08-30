@@ -1,4 +1,6 @@
-﻿using EntityLayer.Concrete;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TraversalCoreProje.Areas.Member.Models;
@@ -10,6 +12,7 @@ namespace TraversalCoreProje.Areas.Member.Controllers
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        ReservationManager reservationManager = new ReservationManager(new EfReservationDal());
         public ProfileController(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
@@ -23,6 +26,7 @@ namespace TraversalCoreProje.Areas.Member.Controllers
             userEditViewModel.Surname = values.Surname;
             userEditViewModel.PhoneNumber = values.PhoneNumber;
             userEditViewModel.Mail = values.Email;
+            ViewBag.value = reservationManager.GetListByApproval(values.Id).Count;
             return View(userEditViewModel);
         }
         [HttpPost]

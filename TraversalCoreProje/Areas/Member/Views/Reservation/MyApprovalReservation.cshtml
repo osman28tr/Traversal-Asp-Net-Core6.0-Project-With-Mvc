@@ -5,28 +5,13 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-@{
-    bool durum;
-    if (ViewBag.value == 0)
-    {
-        durum = false;
-    }
-    else
-    {
-        durum = true;
-    }
-}
-
 <h1>Onay Bekleyen Rezervasyonlarım</h1>
 
 <br />
 <br />
 
-@if (durum == false)
+@if (Model.Any())
 {
-    <h2 style="color:red">Onay Bekleyen Rezervasyon Bulunamadı!</h2>
-}
-else{
     <table class="table table-bordered">
         <tr>
             <th>#</th>
@@ -46,6 +31,10 @@ else{
             </tr>
         }
     </table>
+}
+else{
+    <h2 style="color:red">Onay Bekleyen Rezervasyon Bulunamadı!</h2>
+
 }
 
 
