@@ -33,7 +33,7 @@ namespace BusinessLayer.Concrete
 
         public void TInsert(Destination t)
         {
-            throw new NotImplementedException();
+            _destinationDal.Insert(t);
         }
 
         public void TUpdate(Destination t)
