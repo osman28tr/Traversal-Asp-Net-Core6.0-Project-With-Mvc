@@ -47,6 +47,7 @@ namespace DataAccessLayer.Repository
         {
             using var context = new Context();
             context.Update(t);
+            context.SaveChanges();
         }
     }
 }

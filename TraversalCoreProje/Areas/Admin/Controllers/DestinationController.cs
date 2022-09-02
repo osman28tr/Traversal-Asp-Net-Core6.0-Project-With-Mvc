@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	public class DestinationController : Controller
+    public class DestinationController : Controller
 	{
 		DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 		public IActionResult Index()
@@ -25,17 +25,20 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 			destinationManager.TInsert(destination);
             return RedirectToAction("Index");
         }
-		public IActionResult DeleteDestination(int destinationId)
-		{
-			var values = destinationManager.GetById(destinationId);
+		public IActionResult DeleteDestination(int id)
+		{	
+			var values = destinationManager.GetById(id);
 			destinationManager.TDelete(values);
 			return RedirectToAction("Index");
 		}
-		[HttpGet]
-		public IActionResult UpdateDestination(int destinationId)
+		public IActionResult deneme(int id)
 		{
-            var values = destinationManager.GetById(destinationId);
-            destinationManager.TDelete(values);
+			return new EmptyResult();
+		}
+		[HttpGet]
+		public IActionResult UpdateDestination(int id)
+		{
+            var values = destinationManager.GetById(id);
 			return View(values);
         }
 		[HttpPost]
