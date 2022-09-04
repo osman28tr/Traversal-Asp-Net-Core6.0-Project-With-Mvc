@@ -18,21 +18,26 @@ namespace BusinessLayer.Concrete
 		}
 		public Comment GetById(int id)
 		{
-			throw new NotImplementedException();
+			return _commentDal.GetById(id);
 		}
 		public List<Comment> GetDestinationById(int destinationId)
 		{
 			return _commentDal.GetListByFilter(x => x.DestinationId == destinationId).ToList();
 		}
 
+		public List<Comment> GetListCommentWithNavDes()
+		{
+			return _commentDal.GetListCommentWithNavDes();
+		}
+
 		public void TDelete(Comment t)
 		{
-			throw new NotImplementedException();
+			_commentDal.Delete(t);
 		}
 
 		public List<Comment> TGetList()
 		{
-			throw new NotImplementedException();
+			return _commentDal.GetList();
 		}
 
 		public void TInsert(Comment t)
