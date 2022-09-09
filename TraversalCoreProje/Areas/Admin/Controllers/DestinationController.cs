@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,14 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 	[Area("Admin")]
     public class DestinationController : Controller
 	{
-		DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
+		private readonly IDestinationService _destinationService;
+		public DestinationController(IDestinationService destinationService)
+		{
+			_destinationService = destinationService;
+		}
 		public IActionResult Index()
 		{
-			var values = destinationManager.TGetList();
+			var values = _destinationService.TGetList();
 			return View(values);
 		}
 		[HttpGet]
@@ -22,13 +27,13 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 		[HttpPost]
         public IActionResult AddDestination(Destination destination)
         {
-			destinationManager.TInsert(destination);
+            _destinationService.TInsert(destination);
             return RedirectToAction("Index");
         }
 		public IActionResult DeleteDestination(int id)
 		{	
-			var values = destinationManager.GetById(id);
-			destinationManager.TDelete(values);
+			var values = _destinationService.GetById(id);
+            _destinationService.TDelete(values);
 			return RedirectToAction("Index");
 		}
 		public IActionResult deneme(int id)
@@ -38,13 +43,13 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 		[HttpGet]
 		public IActionResult UpdateDestination(int id)
 		{
-            var values = destinationManager.GetById(id);
+            var values = _destinationService.GetById(id);
 			return View(values);
         }
 		[HttpPost]
         public IActionResult UpdateDestination(Destination destination)
         {
-            destinationManager.TUpdate(destination);
+            _destinationService.TUpdate(destination);
             return RedirectToAction("Index");
         }
     }
