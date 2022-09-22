@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using System.Diagnostics;
 using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -15,6 +18,8 @@ namespace TraversalCoreProje.Controllers
 
         public IActionResult Index()
         {
+            DateTime datetime =Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            _logger.LogInformation(datetime + " Index sayfası çağrıldı.");
             return View();
         }
 

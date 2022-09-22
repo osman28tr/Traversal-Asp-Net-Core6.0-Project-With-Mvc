@@ -13,6 +13,12 @@ using TraversalCoreProje.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddLogging(x =>
+{
+    x.ClearProviders();
+    x.SetMinimumLevel(LogLevel.Debug);
+    x.AddDebug();
+});
 
 builder.Services.AddDbContext<Context>();
 
@@ -27,9 +33,11 @@ builder.Services.AddMvc(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 builder.Services.AddControllersWithViews();
-builder.Services.AddMvc();  
+builder.Services.AddMvc();
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

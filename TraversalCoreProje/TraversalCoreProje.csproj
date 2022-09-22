@@ -383,6 +383,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="wwwroot\Logs\" />
     <Folder Include="wwwroot\UserImages\" />
     <Folder Include="wwwroot\soft-ui-dashboard\.git\objects\info\" />
     <Folder Include="wwwroot\soft-ui-dashboard\.git\objects\pack\" />
