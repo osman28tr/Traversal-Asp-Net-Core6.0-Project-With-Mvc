@@ -370,7 +370,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -383,7 +383,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Member\Data\" />
-    <Folder Include="wwwroot\Logs\" />
     <Folder Include="wwwroot\UserImages\" />
     <Folder Include="wwwroot\soft-ui-dashboard\.git\objects\info\" />
     <Folder Include="wwwroot\soft-ui-dashboard\.git\objects\pack\" />
