@@ -358,6 +358,7 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.2.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.9.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
@@ -383,6 +384,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="wwwroot\PdfReports\" />
     <Folder Include="wwwroot\UserImages\" />
     <Folder Include="wwwroot\soft-ui-dashboard\.git\objects\info\" />
     <Folder Include="wwwroot\soft-ui-dashboard\.git\objects\pack\" />
