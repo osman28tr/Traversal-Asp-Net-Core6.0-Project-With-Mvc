@@ -9,5 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface IGuideDal: IGenericDal<Guide>
     {
+        void ChangeToActiveByGuid(int id);
+        void ChangeToPassiveByGuid(int id);
     }
 }

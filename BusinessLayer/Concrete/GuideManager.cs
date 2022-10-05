@@ -23,6 +23,16 @@ namespace BusinessLayer.Concrete
             return _guideDal.GetById(id);
         }
 
+        public void TChangeToActiveByGuid(int id)
+        {
+            _guideDal.ChangeToActiveByGuid(id);
+        }
+
+        public void TChangeToPassiveByGuid(int id)
+        {
+            _guideDal.ChangeToPassiveByGuid(id);
+        }
+
         public void TDelete(Guide t)
         {
             _guideDal.Delete(t);

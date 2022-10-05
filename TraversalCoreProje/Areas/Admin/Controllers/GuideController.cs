@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/Guide")]
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService;
@@ -14,16 +15,20 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         {
             _guideService = guideService;
         }
+        [Route("")]
+        [Route("Index")]
         public IActionResult Index()
         {
             var values = _guideService.TGetList();
             return View(values);
         }
+        [Route("AddGuide")]
         [HttpGet]
         public IActionResult AddGuide()
         {
             return View();
         }
+        [Route("AddGuide")]
         [HttpPost]
         public IActionResult AddGuide(Guide guide)
         {
@@ -43,25 +48,39 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
                 return View();
             }
         }
+        [Route("EditGuide/{id}")]
         [HttpGet]
         public IActionResult EditGuide(int id)
         {
             var values = _guideService.GetById(id);
             return View(values);
         }
+        [Route("EditGuide")]
         [HttpPost]
         public IActionResult EditGuide(Guide guide)
         {
             _guideService.TUpdate(guide);
             return RedirectToAction("Index");
         }
+        [Route("DeleteGuide/{id}")]
+        [HttpPost]
+        public IActionResult DeleteGuide(int id)
+        {
+            var guide = _guideService.GetById(id);
+            _guideService.TDelete(guide);
+            return RedirectToAction("Index", "Guide", new { area = "Admin" });
+        }
+        [Route("ChangeToActive/{id}")]
         public IActionResult ChangeToActive(int id)
         {
-            return RedirectToAction("Index");
+            _guideService.TChangeToActiveByGuid(id);
+            return RedirectToAction("Index", "Guide", new { area = "Admin" });
         }
+        [Route("ChangeToPassive/{id}")]
         public IActionResult ChangeToPassive(int id)
         {
-            return RedirectToAction("Index");
+            _guideService.TChangeToPassiveByGuid(id);
+            return RedirectToAction("Index", "Guide",new {area="Admin"});
         }
     }
 }
